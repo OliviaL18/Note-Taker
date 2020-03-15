@@ -120,6 +120,10 @@
       const $newNoteBtn = $(".new-note");
       const $noteList = $(".list-container .list-group");
 
+      let saveNote = function(note) {
+        return $.post("/api/notes", note)
+      }
+
       //Saving new note
       $saveNoteBtn.on("click", function(event) {
             event.preventDefault();
@@ -128,9 +132,7 @@
                 text: $noteText.val().trim(),
             };
             console.log(newNote);
-            $.post("/api/notes", newNote)
-                .then(function (data) {
-                });
+            saveNote(newNote).then(function (data) {});
         });
 
 
