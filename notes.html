@@ -120,9 +120,41 @@
       const $newNoteBtn = $(".new-note");
       const $noteList = $(".list-container .list-group");
 
+      let getNotes = function() {
+        return $.get("/api/notes")
+      };
+
       let saveNote = function(note) {
         return $.post("/api/notes", note)
       }
+
+      // Render's the list of note titles
+      let renderNoteList = function(notes) {
+        $noteList.empty();
+
+        let noteListItems = [];
+
+        for (let i = 0; i < notes.length; i++) {
+          let note = notes[i];
+
+          let $li = $("<li class='list-group-item'>").data(note);
+          let $span = $("<span>").text(note.title);
+          let $delBtn = $(
+            "<i class='fas fa-trash-alt float-right text-danger delete-note'>"
+          );
+
+          $li.append($span, $delBtn);
+          noteListItems.push($li);
+        }
+
+        $noteList.append(noteListItems);
+      };
+
+      let getAndRenderNotes = function() {
+        return getNotes().then(function(data) {
+          renderNoteList(data);
+        });
+      };
 
       //Saving new note
       $saveNoteBtn.on("click", function(event) {
@@ -132,10 +164,13 @@
                 text: $noteText.val().trim(),
             };
             console.log(newNote);
-            saveNote(newNote).then(function (data) {});
+            saveNote(newNote).then(function (data) {
+              getAndRenderNotes();
+            });
         });
 
-
+      // Gets and renders the initial list of notes
+      getAndRenderNotes();
 
     });
   
