@@ -156,18 +156,18 @@
         });
       };
 
-      //Saving new note
-      $saveNoteBtn.on("click", function(event) {
-            event.preventDefault();
-            let newNote = {
-                title: $noteTitle.val().trim(),
-                text: $noteText.val().trim(),
-            };
-            console.log(newNote);
-            saveNote(newNote).then(function (data) {
-              getAndRenderNotes();
-            });
+      let handleNoteSave = function () {
+        let newNote = {
+            title: $noteTitle.val().trim(),
+            text: $noteText.val().trim(),
+        };
+        saveNote(newNote).then(function (data) {
+          getAndRenderNotes();
         });
+      }
+
+      //Saving new note
+      $saveNoteBtn.on("click", handleNoteSave);
 
       // Gets and renders the initial list of notes
       getAndRenderNotes();
