@@ -12,7 +12,7 @@ app.use(express.json());
 
 //Routes
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "notes.html"));
+  res.sendFile(path.join(__dirname, "../../notes.html"));
 });
 
 //Server is listening
