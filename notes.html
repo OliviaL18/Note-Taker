@@ -163,6 +163,7 @@
         let newNote = {
             title: $noteTitle.val().trim(),
             text: $noteText.val().trim(),
+            id: Math.floor(Math.random() * 89999 + 10000),
         };
         saveNote(newNote).then(function (data) {
           getAndRenderNotes();
@@ -190,7 +191,7 @@
       // Sets the activeNote and displays it
       let handleNoteView = function() {
         activeNote = $(this).data();
-          console.log(`Active Note: ${activeNote}`);
+          console.log(`Active Note: ${JSON.stringify(activeNote)}`);
         renderActiveNote();
       };
 
