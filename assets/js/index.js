@@ -2,17 +2,33 @@
 const express = require("express");
 const path = require("path");
 
+const app = express();
+
 //Define a port to listen for incoming requests
 const PORT = process.env.PORT || 3000;
 
 //Handle data parsing
-const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+//Variable to hold the notes (for now)
+let notes = [];
 
 //Routes
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "../../notes.html"));
+});
+
+app.get("/api/notes", function(req, res) {
+  return res.json(notes);
+});
+
+//Create new note
+app.post("/api/notes", function(req, res) {
+  let newNote = req.body;
+  console.log(newNote);
+  notes.push(newNote);
+  res.json(newNote);
 });
 
 //Server is listening
