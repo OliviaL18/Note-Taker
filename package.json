@@ -13,6 +13,6 @@
     "path": "^0.12.7"
   },
   "scripts": {
-    "start": "/assets/js/index.js"
+    "start": "index.js"
   }
 }
