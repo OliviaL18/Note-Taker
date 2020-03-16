@@ -31,6 +31,14 @@ app.post("/api/notes", function(req, res) {
   console.log(newNote);
   notes.push(newNote);
   res.json(newNote);
+  fs.appendFile('db.json', JSON.stringify(newNote), "utf8", function(err) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      console.log("Note Added!");
+    }
+  });
 });
 
 //Server is listening
