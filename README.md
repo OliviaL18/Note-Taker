@@ -23,3 +23,13 @@ The live application is deployed on Heroku.
 See below for a preview of what the application looks like:
 
 ![Preview](./screenshot.png)
+
+## License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+This project is licensed under the MIT License.
+
+## Contact 
+
+Olivia Loos - https://api.github.com/users/OliviaL18
