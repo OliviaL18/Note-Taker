@@ -11,13 +11,14 @@ const PORT = process.env.PORT || 3000;
 //Handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static("public"));
 
 //Variable to hold the notes (for now)
 let notes = [];
 
 //Routes
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "../../notes.html"));
+  res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
 
 app.get("/api/notes", function(req, res) {
