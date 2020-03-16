@@ -119,12 +119,20 @@ $(document).ready(function () {
       });
     };
 
+    let handleNewNoteView = function() {
+        activeNote = {};
+        renderActiveNote();
+      };
+      
+
     //Saving new note
     $saveNoteBtn.on("click", handleNoteSave);
     //Delete note
     $noteList.on("click", ".delete-note", handleNoteDelete);
     //View note & set active note
     $noteList.on("click", ".list-group-item", handleNoteView);
+
+    $newNoteBtn.on("click", handleNewNoteView);
 
     //Render save button
     $noteTitle.on("keyup", handleRenderSaveBtn);
